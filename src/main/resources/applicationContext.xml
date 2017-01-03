@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 用于持有ApplicationContext,可以使用ApplicationContextHolder.getBean('xxxx')的静态方法得到spring bean对象 -->
+    <bean class="cn.org.rapid_framework.util.holder.ApplicationContextHolder"/>
+    <!-- redis -->
+    <bean id="redisClient" class="com.yufei.cache.RedisClient">
+        <property name="pool" ref="cachePool"/>
+    </bean>
+    <bean id="cachePool" class="com.yufei.cache.RedisPool">
+        <property name="redisNodes" value="127.0.0.1:6379" />
+    </bean>
+
+</beans>
